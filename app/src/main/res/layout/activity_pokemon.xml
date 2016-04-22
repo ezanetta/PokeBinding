@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable name="pokemon" type="com.example.ezanetta.pokebinding.Pokemon" />
+    </data>
+
+    <LinearLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="@dimen/pokemon_dialog_padding"
+        tools:context="com.example.ezanetta.pokebinding.PokemonActivity">
+
+        <TextView
+            android:textColor="@android:color/black"
+            android:text="@{pokemon.name}"
+            android:textSize="24sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:layout_marginTop="20dp"
+            app:imageUrl="@{pokemon.url}"
+            app:error="@{@drawable/pokeball}"
+            android:layout_width="200dp"
+            android:layout_height="200dp" />
+
+    </LinearLayout>
+</layout>

@@ -1,8 +1,10 @@
 package com.example.ezanetta.pokebinding;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.ezanetta.pokebinding.databinding.PokemonItemBinding;
@@ -38,17 +40,25 @@ public class PokeAdapter extends RecyclerView.Adapter<PokeAdapter.PokeHolder> {
         return mPokemons.size();
     }
 
-    public class PokeHolder extends RecyclerView.ViewHolder{
+    public class PokeHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         private PokemonItemBinding mBinding;
 
         public PokeHolder(PokemonItemBinding binding) {
             super(binding.getRoot());
             mBinding = binding;
+            itemView.setOnClickListener(this);
         }
 
         public void bindConnection(Pokemon pokemon){
             mBinding.setPokemon(pokemon);
+        }
+
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(v.getContext(), PokemonActivity.class);
+            intent.putExtra(PokemonActivity.POKEMON_PARCELABLE_OBJECT, mPokemons.get(getAdapterPosition()));
+            v.getContext().startActivity(intent);
         }
     }
 }

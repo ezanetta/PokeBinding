@@ -73,12 +73,12 @@ public class MainActivity extends AppCompatActivity {
             List<Pokemon> pokemons = new ArrayList<>();
 
             JSONObject jsonObj = new JSONObject(jsonString);
-            JSONArray jsonArraySounds = jsonObj.getJSONArray("pokemons");
+            JSONArray pokemonsJson = jsonObj.getJSONArray("pokemons");
 
-            for(int i = 0; i < jsonArraySounds.length(); i++){
+            for(int i = 0; i < pokemonsJson.length(); i++){
 
-                String name = jsonArraySounds.getJSONObject(i).getString("pokemon-name");
-                String url = jsonArraySounds.getJSONObject(i).getString("image-url");
+                String name = pokemonsJson.getJSONObject(i).getString("pokemon-name");
+                String url = pokemonsJson.getJSONObject(i).getString("image-url");
 
                 Pokemon pokemon = new Pokemon(name, url);
                 pokemons.add(pokemon);
